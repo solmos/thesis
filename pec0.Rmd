@@ -1,0 +1,40 @@
+---
+title: 'Thesis proposal'
+subtitle: "PEC 0"
+author: "Sergio Olmos Pardo"
+date: "24/2/2018"
+output: html_document
+bibliography: pec0.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Methods for Analyzing Cluster-Correlated Data
+
+**Keywords**: `cluster data`, `multilevel data`, `multilevel/hierarchical models`, `regression`, `linear mixed models`, `general estimating equations`.
+
+
+### Topic
+
+Clustered data presents a hierarchical/multilevel structure where observations are grouped or nested within different clusters. Clustering can be due to a naturally occuring hierarchy in the target population or a consequence of study design [@fitz].
+
+The fields where this type of data arise are numerous. Examples of clustered data are multi-center clinical trials where measurements on patients are nested whithin clinics or toxicity studies where repeated measurements are obtained from a single individual at different times.
+
+When data have a clustered/grouped structure measurements on units within a cluster are in general more similar than measurements on units in different clusters. Statistcal models for this type of data must account for the intra-cluster correlation at each level, otherwise inferences may be misleading.
+
+There are several methods for analyzing multilevel data, which require different sets of assumptions and their adecuacy differs depending on the structure of the data. The two most commonly used regression methods are linear mixed models and generalized estimating equations. There are others, such as conjugate generalized linear mixed models ( ).
+
+Due to the wide applicability of these statistical models in the context of clustered data, a review of the different methods is in order.
+
+### Line of Research
+
+
+
+
+### Objectives
+
+
+
+### References
