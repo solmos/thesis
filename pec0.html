@@ -126,26 +126,26 @@ $(document).ready(function () {
 </div>
 
 
-<div id="methods-for-analyzing-cluster-correlated-data" class="section level2">
-<h2>Methods for Analyzing Cluster-Correlated Data</h2>
-<p><strong>Keywords</strong>: <code>clustered-correlated data</code>, <code>multilevel/hierarchical models</code>, <code>regression</code>, <code>linear mixed models</code>, <code>general estimating equations</code>.</p>
-<div id="topic" class="section level3">
-<h3>Topic</h3>
+<div id="methods-for-analyzing-cluster-correlated-data" class="section level1">
+<h1>Methods for Analyzing Cluster-Correlated Data</h1>
+<p><strong>Keywords</strong>: <code>cluster-correlated data</code>, <code>multilevel/hierarchical models</code>, <code>regression</code>, <code>linear mixed models</code>, <code>general estimating equations</code>.</p>
+<div id="topic" class="section level2">
+<h2>Topic</h2>
 <p>Clustered data presents a hierarchical/multilevel structure where observations are grouped or nested within different clusters. Clustering can be due to a naturally occuring hierarchy in the target population or a consequence of study design <span class="citation">(Fitzmaurice 2005)</span>. The fields where this type of data arise are numerous. Examples of clustered data are multi-center clinical trials where measurements on patients are nested whithin clinics or toxicity studies where repeated measurements are obtained from a single individual at different times.</p>
 <p>When data have a clustered/grouped structure measurements on units within a cluster are in general more similar than measurements on units in different clusters. Statistcal models for this type of data must account for the intra-cluster correlation at each level, otherwise inferences may be misleading.</p>
 <p>There are several methods for analyzing multilevel data, which require different sets of assumptions and their adecuacy differs depending on the structure of the data. The two most commonly used regression methods are linear mixed models and generalized estimating equations. There are others, such as conjugate generalized linear mixed models <span class="citation">(Jarod Y.L. Lee 2017)</span>.</p>
 <p>Several statistical packages for the implementation of these methods exist. The R packages <code>nlme</code>, <code>lme4</code> and <code>geepack</code> provide a powerful and easy-to-use framework to work with these methods.</p>
 <p>Due to the wide applicability of these statistical models in the context of clustered data, a review of the different methods is in order.</p>
 </div>
-<div id="line-of-research" class="section level3">
-<h3>Line of Research</h3>
+<div id="line-of-research" class="section level2">
+<h2>Line of Research</h2>
 <p>Knowing what method works best with a given dataset is not straightforward. We will focus our analysis in the two most commonly used statistical models for clustered data, namely, linear mixed models and generalized estimating equations. We can explore how the asymptotic properties of the different statistical models depend on the structure of the data: number of clusters and sample size in each cluster <span class="citation">(Li and McKeague 2013)</span>. Also, we can study the effects of ignoring the correlation structure within a cluster on our results. Simulation studies can provide some guidelines in the model specification process.</p>
 <p>Furthermore, better graphical displays could be helpful in this context. This includes exploratory data analysis of clustered data as well as results of the modeling process.</p>
 <p>Finally, a few example datasets from real studies can be used to illustrate all of the above.</p>
 
 </div>
-<div id="objectives" class="section level3">
-<h3>Objectives</h3>
+<div id="objectives" class="section level2">
+<h2>Objectives</h2>
 <ul>
 <li><p>Review the different statistical methods that can be used to model clustered data.</p></li>
 <li><p>Study the asymptotic properties of linear mixed models and the generalized estimating equations approach under different number of clusters and different sample sizes in each cluster through simulation.</p></li>
@@ -156,8 +156,31 @@ $(document).ready(function () {
 <li><p>Analyze a few examples of real clustered data.</p></li>
 </ul>
 </div>
-<div id="references" class="section level3 unnumbered">
-<h3>References</h3>
+<div id="timeline" class="section level2">
+<h2>Timeline</h2>
+<p><strong>March 4 - March 19:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Definition of cluster data.</p></li>
+<li><p>Review of statistical methods for multilevel data.</p></li>
+<li><p>Definition of the generalized estimating equations method and the linear mixed model.</p></li>
+<li><p>Pros and cons of these two methods.</p></li>
+</ol>
+<p><strong>March 20 - April 23:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Study the effects of ignoring the correlation structure within clusters on results.</p></li>
+<li><p>Study the asymptotic properties of linear mixed models and the generalized estimating equations approach under different number of clusters and different sample sizes in each cluster through simulation.</p></li>
+<li><p>Give some guidelines and recomendations for the model specification process.</p></li>
+</ol>
+<p><strong>April 24 - May 21:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Find two or three real datasets.</p></li>
+<li><p>Apply GEE and LMM to these data.</p></li>
+<li><p>Create an R Markdown template for reporting results of clustered data analyses.</p></li>
+<li><p>Better graphical displays in R for the exploration and modeling of clustered data.</p></li>
+</ol>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
 <div id="refs" class="references">
 <div id="ref-fitz">
 <p>Fitzmaurice, Garret. 2005. “Overview of Methods for Analyzing Cluster-Correlated Data.” Boston: Harvard School of Public Health; <a href="https://catalyst.harvard.edu/docs/biostatsseminar/Fitzmaurice_BSP-Workshop-Slides.pdf" class="uri">https://catalyst.harvard.edu/docs/biostatsseminar/Fitzmaurice_BSP-Workshop-Slides.pdf</a>.</p>

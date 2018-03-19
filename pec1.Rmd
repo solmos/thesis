@@ -1,0 +1,229 @@
+---
+title: 'PEC1: Project Plan'
+author: "Sergio Olmos Pardo"
+date: "19/3/2018"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+subtitle: Methods for Analyzing Cluster-Correlated Data
+bibliography: tfm.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+# 1. Context and Motivation of the Project
+
+## 1.1. General Description
+When data have a clustered/grouped structure, measurements on units within a cluster are in general more similar than measurements on units in different clusters. Statistical models for this type of data must account for the intra-cluster correlation at each level, otherwise inferences may be misleading.
+
+There are several methods for analyzing multilevel data, which require different sets of assumptions and their adequacy differs depending on the structure of the data. The two most commonly used regression methods are linear mixed models (LMM) and generalized estimating equations (GEE). There are others, such as conjugate generalized linear mixed models [@conjugate].
+
+This project presents an assessment of LMM and GEE in the context of cluster-correlated data analysis. Simulation studies will be performed to asses the performance of these two methods for different hierarchical structures [see @simulation13; @robin18; @geeSim]. More specifically, the stability of parameter estimates, confidence interval coverage and F test performance will be evaluated for different number of clusters and different sample sizes in each cluster. The impact of ignoring the correlation structure within clusters could also be evaluated.
+
+Furthermore, real data sets will be analyzed following the guidelines suggested by the simulation study. An R Markdown template will be created and used to report the analyses of these data sets. The functions used in these analyses for graphical displays in the exploratory and modeling phases, will be provided. The data, report template and code will be provided as an R package.
+
+
+## 1.2. Motivation
+
+The fields where this type of data arise are numerous, from the social sciences to the natural sciences. Examples of clustered data are multi-center clinical trials where measurements on patients are nested within clinics, toxicity studies where repeated measurements are obtained from a single individual at different times or agricultural experiments with complex experimental designs. Knowing what method works best with a given data set is not straightforward. 
+
+A review of the literature suggests that the two most common methods for analyzing hierarchical data are LMM and GEE. Each method has advantages and drawbacks. Linear mixed models require additional assumptions beyond those of classical regression, which can be difficult to verify [@geeHubbard]. On the other hand, GEE can be problematic in small sample settings and in unbalanced designs [@geeRogers15].
+
+The present project aims to provide some guidelines for researchers trying to analyze multilevel data.
+
+# 2. Objectives
+
+## 2.1. General Objectives
+
+1. Simulation-based evaluation of the linear mixed model and generalized estimating equation approach under different hierarchical structures in the data.
+
+2. Analysis of two or three real data sets with a hierarchical structure from different fields in science with the methods previously assessed.
+
+3. Creation of an R package with all the data, R Markdown templates and code used.
+
+
+## 2.2. Specific Objectives
+
+### 2.2.1. Simulation study
+
+1. Define clustered data and review statistical methods for this type of data.
+
+2. Specify the generalized estimating equations method and the linear mixed model.
+
+3. Pros and cons of these two methods.
+
+4. Study the performance of linear mixed models and the generalized estimating equations approach under different number of clusters and different sample sizes in each cluster through simulation.
+
+5. Study the effects of ignoring the correlation structure within clusters on results.
+
+6. Give some guidelines and recommendations for the model specification process: 3 days
+
+
+### 2.2.2. Analysis of real cluster-correlated data
+
+1. Illustrate how the guidelines provided by the simulation study can help in the model specification process when trying to analyze real data sets.
+
+2. Apply GEE and LMM to these data.
+
+
+### 2.2.3. R Package
+
+1. Create an R package containing the simulated and real data, an R Markdown template for reporting and R functions to draw useful plots.
+
+
+
+# 3. Approach and Methods
+
+The project will extensively use the R programming environment to accomplish the proposed objectives. R is a free and open source programming language specifically designed for statistical analysis, with hundreds of packages that perform specific tasks. In the context of cluster-correlated data, the packages `nlme` and `lme4` provide two frameworks to fit linear mixed models, while the `geepack` package implements the generalized estimating equations approach.
+
+Moreover, the R programming environment provides a workflow for reproducible research. As opposed to point-and-click statistical software, in R it is easy for independent researchers to reproduce the analysis since it weaves the principle of reproducibility throughout the entire project. In particular, with self-contained R packages it is straightforward to share and reproduce the analysis performed, by attaching the data and source code into a single file that can be loaded within the R environment.
+
+Since a large amount of code will be written, version control will be used. Git and Github will help keep track of changes in the project and correct potential bugs in the code.
+
+Regarding the main topic of the project, a more theoretical approach in the assessment of LMM and GEE could be adopted, but seems to be out of reach given the time constraint and the expected scope of the project. Instead, a simulation approach will be used, taking advantage of the R programming environment.
+
+For different hierarchical structures the performance of the fitted models are assessed using the following performance characteristics as described in @robin18:
+
+* Relative difference between the mean of the parameter estimates and the true parameters.
+
+* Relative difference between the mean estimated standard error and the empirical standard error, where the estimated standard error represents the variability within simulations and the empirical standard error represents the variability between simulations.
+
+* Coverage of the confidence interval, calculated as the percentage of times the true parameter falls within the estimated 95% Wald confidence interval.
+
+* Stability of the F test by comparing the number of times the null hypothesis was rejected under different hierarchical structures.
+
+
+# 4. Project Planning
+
+## 4.1. Tasks
+
+### 1. Simulation study
+
+#### 1.1. Overview of methods (7 days)
+
+1. Review the literature for multilevel data analysis: *3 days*
+
+2. Define LMMs and GEE: *3 days*
+
+2. State the known advantages and drawbacks of LMMs and GEE: *1 day*
+
+#### 1.2. Simulation (25 days)
+
+1. Generate the simulated data with different hierarchical structures: *10 days*
+
+2. Fit the models to the generated data sets: *10 days*
+
+3. Assess the performance of the fitted models For different hierarchical structures: *5 days*
+
+
+#### 1.3. Guidelines (3 days)
+
+1. Make some recommendations about the modeling of cluster data based on the simulation study: *3 days*
+
+### 2. Analysis of real cluster-correlated data sets (22 days)
+
+1. Find two or three data sets with different hierarchical structures: *2 days*
+
+2. Perform an initial exploratory data analysis: *3 days*
+
+3. Fit a chosen model: *10 days*
+
+4. Evaluate the fit of the model to the data: *7 days*
+
+### 3. R Package (20 days)
+
+1. Create an R Markdown template for reporting results of clustered data analyses: *5 days*
+
+2. Write tests for the functions that will be included in the package: *10 days*
+
+3. Build the package: 5 days: *5 days*
+
+### 4. Presentation (10 days)
+
+1. Create the presentation slides (20 max.): *5 days*
+
+2. Record a video presentation of the project: *5 days*
+
+## 4.2. Timeline
+
+A Gantt diagram is presented below with an initial project schedule. The timeline expands from March 20 to May 25. The red boxes indicate difficult tasks that could take longer.
+```{r echo=FALSE}
+library(DiagrammeR)
+mermaid("
+gantt
+title Gantt Diagram
+
+section Specific Tasks
+Model definitions:      active,         definitions,    2017-03-23, 3d
+Generate simulated data:        crit,           gensim,         after definitions, 10d
+Assess models:            fitsim,         after gensim, 15d
+Fit models to real data:                fit,    2017-04-23, 10d
+
+section Milestones
+Overview of methods:    active,         review,         2017-03-20, 7d
+Simulation:             crit,            simulation,     after review, 25d
+Analysis of real data:                  analysis,       after simulation, 22d
+Presentation:                   presentation,   after test, 10d
+
+section Extra
+Impact of ignoring correlation structure:               corr,   after gensim, 3d
+R package:                              pckg,           after analysis, 20d
+Unitary tests:          crit,           test,           after analysis, 10d")
+```
+
+Three sections are shown which indicate relative importance and scope of the tasks. Tasks in the milestones section are general and of great importance to the project. The section named `Specific Tasks` shows some sub-tasks which are critical within each milestone. The section `Extra` shows tasks that could be left undone in case the more important tasks take longer than planned.
+
+
+## 4.3. Milestones
+
+### 4.3.1. Overview of methods
+The definition of the models considered in this project is essential for the subsequent analysis since it provides the necessary context and notation.
+
+### 4.3.2. Simulation
+The simulation study provides the basis for the guidelines regarding models for cluster data that this project tries to provide. Moreover, these guidelines could ease and justify the model choices made to analyze the real data sets.
+
+### 4.3.3. Analysis of real data
+This section of the project is of great practical value since it illustrates the complete modeling process with real data. These analyses form the structure of the R Markdown template that we intend to include in the R package included in this project.
+
+
+## 4.4. Risk assesment
+
+### 4.4.1. Simulation study
+The simulation study represents a key section of this project. However, it represents a big challenge given the time constraint and difficulty of the task. A great deal of struggle is expected in this section. In case the simulation study could not be done, more emphasis could be placed in the analysis of real data sets.
+
+### 4.4.2. R package
+The creation of an R package is ideal for sharing our work, but our experience in package development is limited and could pose too big of a challenge. If this were the case, the code could be provided as R scripts or R Markdown documents and the data as csv files.
+
+# 5. Expected Results
+
+* A manuscript with the results of the simulation study and the analyses of the real data sets.
+
+* An R package with all the data and code, as well as an R Markdown template for reporting.
+
+* Virtual presentation showing the methodology used and the most important results of the project.
+
+* Self-assessment of the project according to the evaluation criteria.
+
+# 6. Manuscript Structure
+
+#### 1. Introduction
+First a definition of cluster-correlated data and review of statistical methods used to analyze this type of data are given. Then, the frameworks of LMM and GEE are specified.
+
+#### 2. Methods
+The simulation procedure and the model assessment criteria are stated in detail.
+
+#### 3. Results
+The results of the simulation study and the analyses of the real data sets are presented.
+
+#### 4. Discussion
+Potential pitfalls of the project will be stated. Moreover, discussion of how the results fit within the literature will be considered, together with related further research.
+
+# 7. References
