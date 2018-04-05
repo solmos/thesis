@@ -118,3 +118,160 @@
 	Note = {Presentation Slides},
 	Title = {Overview of Methods for Analyzing Cluster-Correlated Data},
 	Year = 2005}
+
+@Misc{rfaq,
+  author        = {Kurt Hornik},
+  title         = {{R} {FAQ}},
+  year          = {2017},
+  url           = {https://CRAN.R-project.org/doc/FAQ/R-FAQ.html}
+}
+
+@unpublished{vc,
+        author = {Jennifer Bryan},
+        title = {Excuse me, do you have a moment to talk about version control?},
+        journal = {PeerJ Preprints},
+        year = 2017,
+        eprint = {5:e3159v2},
+        url = {https://doi.org/10.7287/peerj.preprints.3159v2}}
+        
+@article{wedderburn74,
+ ISSN = {00063444},
+ URL = {http://www.jstor.org/stable/2334725},
+ abstract = {To define a likelihood we have to specify the form of distribution of the observations, but to define a quasi-likelihood function we need only specify a relation between the mean and variance of the observations and the quasi-likelihood can then be used for estimation. For a one-parameter exponential family the log likelihood is the same as the quasi-likelihood and it follows that assuming a one-parameter exponential family is the weakest sort of distributional assumption that can be made. The Gauss-Newton method for calculating nonlinear least squares estimates generalizes easily to deal with maximum quasi-likelihood estimates, and a rearrangement of this produces a generalization of the method described by Nelder & Wedderburn (1972).},
+ author = {R. W. M. Wedderburn},
+ journal = {Biometrika},
+ number = {3},
+ pages = {439--447},
+ publisher = {[Oxford University Press, Biometrika Trust]},
+ title = {Quasi-Likelihood Functions, Generalized Linear Models, and the Gauss-Newton Method},
+ volume = {61},
+ year = {1974}
+}
+
+@article{liang86,
+ ISSN = {00063444},
+ URL = {http://www.jstor.org/stable/2336267},
+ abstract = {This paper proposes an extension of generalized linear models to the analysis of longitudinal data. We introduce a class of estimating equations that give consistent estimates of the regression parameters and of their variance under mild assumptions about the time dependence. The estimating equations are derived without specifying the joint distribution of a subject's observations yet they reduce to the score equations for multivariate Gaussian outcomes. Asymptotic theory is presented for the general class of estimators. Specific cases in which we assume independence, m-dependence and exchangeable correlation structures from each subject are discussed. Efficiency of the proposed estimators in two simple situations is considered. The approach is closely related to quasi-likelihood.},
+ author = {Kung-Yee Liang and Scott L. Zeger},
+ journal = {Biometrika},
+ number = {1},
+ pages = {13--22},
+ publisher = {[Oxford University Press, Biometrika Trust]},
+ title = {Longitudinal Data Analysis Using Generalized Linear Models},
+ volume = {73},
+ year = {1986}
+}
+
+@article{zeger86,
+ ISSN = {0006341X, 15410420},
+ URL = {http://www.jstor.org/stable/2531248},
+ abstract = {Longitudinal data sets are comprised of repeated observations of an outcome and a set of covariates for each of many subjects. One objective of statistical analysis is to describe the marginal expectation of the outcome variable as a function of the covariates while accounting for the correlation among the repeated observations for a given subject. This paper proposes a unifying approach to such analysis for a variety of discrete and continuous outcomes. A class of generalized estimating equations (GEEs) for the regression parameters is proposed. The equations are extensions of those used in quasi-likelihood (Wedderburn, 1974, Biometrika 61, 439-447) methods. The GEEs have solutions which are consistent and asymptotically Gaussian even when the time dependence is misspecified as we often expect. A consistent variance estimate is presented. We illustrate the use of the GEE approach with longitudinal data from a study of the effect of mothers' stress on children's morbidity.},
+ author = {Scott L. Zeger and Kung-Yee Liang},
+ journal = {Biometrics},
+ number = {1},
+ pages = {121--130},
+ publisher = {[Wiley, International Biometric Society]},
+ title = {Longitudinal Data Analysis for Discrete and Continuous Outcomes},
+ volume = {42},
+ year = {1986}
+}
+@article{geepack,
+   author = {Søren  Højsgaard and Ulrich Halekoh and Jun Yan},
+   title = {The R Package geepack for Generalized Estimating Equations},
+   journal = {Journal of Statistical Software, Articles},
+   volume = {15},
+   number = {2},
+   year = {2005},
+   keywords = {},
+   abstract = {This paper describes the core features of the R package geepack, which implements the generalized estimating equations (GEE) approach for fitting marginal generalized linear models to clustered data. Clustered data arise in many applications such as longitudinal data and repeated measures. The GEE approach focuses on models for the mean of the correlated observations within clusters without fully specifying the joint distribution of the observations. It has been widely used in statistical practice. This paper illustrates the application of the GEE approach with geepack through an example of clustered binary 
+data.},
+   issn = {1548-7660},
+   pages = {1--11},
+   doi = {10.18637/jss.v015.i02},
+   url = {https://www.jstatsoft.org/v015/i02}
+}
+
+@book{longitudinal15,
+  author = {Xian Liu},
+  year = {2015},
+  title = {Methods and applications of longitudinal data analysis},
+  publisher = {Academic Press},
+  edition = {1},
+  chapter = {9},
+  isbn = {978-0-12-801342-7}}
+  
+@article{prentice88,
+ ISSN = {0006341X, 15410420},
+ URL = {http://0-www.jstor.org.cataleg.uoc.edu/stable/2531733},
+ abstract = {Regression methods are considered for the analysis of correlated binary data when each binary observation may have its own covariates. It is argued that binary response models that condition on some or all binary responses in a given "block" are useful for studying certain types of dependencies, but not for the estimation of marginal response probabilities or pairwise correlations. Fully parametric approaches to these latter problems appear to be unduly complicated except in such special cases as the analysis of paired binary data. Hence, a generalized estimating equation approach is advocated for inference on response probabilities and correlations. Illustrations involving both small and large block sizes are provided.},
+ author = {Ross L. Prentice},
+ journal = {Biometrics},
+ number = {4},
+ pages = {1033--1048},
+ publisher = {[Wiley, International Biometric Society]},
+ title = {Correlated Binary Regression with Covariates Specific to Each Binary Observation},
+ volume = {44},
+ year = {1988}
+}
+
+@article{liang92,
+ ISSN = {00359246},
+ URL = {http://www.jstor.org/stable/2345947},
+ abstract = {It is common to observe a vector of discrete and/or continuous responses in scientific problems where the objective is to characterize the dependence of each response on explanatory variables and to account for the association between the outcomes. The response vector can comprise repeated observations on one variable, as in longitudinal studies or genetic studies of families, or can include observations for different variables. This paper discusses a class of models for the marginal expectations of each response and for pairwise associations. The marginal models are contrasted with log-linear models. Two generalized estimating equation approaches are compared for parameter estimation. The first focuses on the regression parameters; the second simultaneously estimates the regression and association parameters. The robustness and efficiency of each is discussed. The methods are illustrated with analyses of two data sets from public health research.},
+ author = {Kung-Yee Liang and Scott L. Zeger and Bahjat Qaqish},
+ journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+ number = {1},
+ pages = {3--40},
+ publisher = {[Royal Statistical Society, Wiley]},
+ title = {Multivariate Regression Analyses for Categorical Data},
+ volume = {54},
+ year = {1992}
+}
+
+@article{zhao90,
+author = {Zhao, Lue Ping and Prentice, Ross L.},
+title = {Correlated binary regression using a quadratic exponential model},
+journal = {Biometrika},
+volume = {77},
+number = {3},
+pages = {642-648},
+year = {1990},
+doi = {10.1093/biomet/77.3.642},
+URL = {http://dx.doi.org/10.1093/biomet/77.3.642},
+eprint = {/oup/backfile/content_public/journal/biomet/77/3/10.1093/biomet/77.3.642/2/77-3-642.pdf}
+}
+
+@article{lips94,
+ ISSN = {0006341X, 15410420},
+ URL = {http://www.jstor.org/stable/2533218},
+ abstract = {Moment methods for analyzing repeated binary responses have been proposed by Liang and Zeger (1986, Biometrika 73, 13-22), and extended by Prentice (1988, Biometrics 44, 1033-1048). In their generalized estimating equations (GEE), both Liang and Zeger (1986) and Prentice (1988) estimate the parameters associated with the expected value of an individual's vector of binary responses as well as the correlations between pairs of binary responses. In this paper, we discuss one-step estimators, i.e., estimators obtained from one step of the generalized estimating equations, and compare their performance to that of the fully iterated estimators in small samples. In simulations, we find the performance of the one-step estimator to be qualitatively similar to that of the fully iterated estimator. When the sample size is small and the association between binary responses is high, we recommend using the one-step estimator to circumvent convergence problems associated with the fully iterated GEE algorithm. Furthermore, we find the GEE methods to be more efficient than ordinary logistic regression with variance correction for estimating the effect of a time-varying covariate.},
+ author = {Stuart R. Lipsitz and Garrett M. Fitzmaurice and Endel J. Orav and Nan M. Laird},
+ journal = {Biometrics},
+ number = {1},
+ pages = {270--278},
+ publisher = {[Wiley, International Biometric Society]},
+ title = {Performance of Generalized Estimating Equations in Practical Situations},
+ volume = {50},
+ year = {1994}
+}
+
+@article{ananth18,
+	Annote = {doi: 10.1016/j.annepidem.2004.08.007},
+	Author = {Ananth, Cande V. and Platt, Robert W. and Savitz, David A.},
+	Booktitle = {Annals of Epidemiology},
+	Date-Added = {2018-04-03 18:14:28 +0000},
+	Date-Modified = {2018-04-03 18:14:28 +0000},
+	Doi = {10.1016/j.annepidem.2004.08.007},
+	Isbn = {1047-2797},
+	Journal = {Annals of Epidemiology},
+	M3 = {doi: 10.1016/j.annepidem.2004.08.007},
+	Month = {2018/04/03},
+	Number = {4},
+	Pages = {293--301},
+	Publisher = {Elsevier},
+	Title = {Regression Models for Clustered Binary Responses: Implications of Ignoring the Intracluster Correlation in an Analysis of Perinatal Mortality in Twin Gestations},
+	Ty = {JOUR},
+	Url = {http://dx.doi.org/10.1016/j.annepidem.2004.08.007},
+	Volume = {15},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/j.annepidem.2004.08.007},
+	Year = {2005}}

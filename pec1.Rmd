@@ -28,7 +28,7 @@ There are several methods for analyzing multilevel data, which require different
 
 This project presents an assessment of LMM and GEE in the context of cluster-correlated data analysis. Simulation studies will be performed to asses the performance of these two methods for different hierarchical structures [see @simulation13; @robin18; @geeSim]. More specifically, the stability of parameter estimates, confidence interval coverage and F test performance will be evaluated for different number of clusters and different sample sizes in each cluster. The impact of ignoring the correlation structure within clusters could also be evaluated.
 
-Furthermore, real data sets will be analyzed following the guidelines suggested by the simulation study. An R Markdown template will be created and used to report the analyses of these data sets. The functions used in these analyses for graphical displays in the exploratory and modeling phases, will be provided. The data, report template and code will be provided as an R package.
+Furthermore, real data sets will be analyzed following the guidelines suggested by the simulation study. An R Markdown template will be created and used to report the analyses of these data sets. The functions used in these analyses for graphical displays in the exploratory and modeling phases will be provided. The data, report template and code will be provided as an R package.
 
 
 ## 1.2. Motivation
@@ -64,7 +64,7 @@ The present project aims to provide some guidelines for researchers trying to an
 
 5. Study the effects of ignoring the correlation structure within clusters on results.
 
-6. Give some guidelines and recommendations for the model specification process: 3 days
+6. Give some guidelines and recommendations for the model specification process.
 
 
 ### 2.2.2. Analysis of real cluster-correlated data

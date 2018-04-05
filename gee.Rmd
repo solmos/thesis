@@ -1,0 +1,82 @@
+---
+title: "Generalized Estimating Equations"
+author: "Sergio Olmos Pardo"
+date: "29/3/2018"
+header-includes:
+  - \usepackage{amsmath}
+output: pdf_document
+bibliography: tfm.bib
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = TRUE)
+```
+
+## Framework
+
+The GEE approach developed by @liang86 can be seen as a generalization of the estimation method of quasi-likelihood proposed by @wedderburn74, which allows for a separate specification of the mean and variance structure. Moreover, it is not necessary that these specifications correspond to a proper likelihood function. It suffices to specify the correct mean structure, together with a *working* variance structure, and to define parameter estimates as the solutions of a quasi-score function or *generalized estimating equation*.
+
+Consider a sample of independent multivariate observations $Y_i = (Y_{i1}, \ldots, Y_{it}, \ldots Y_{in_i})$ of $i = 1, 2, \ldots, K$ clusters each with $n_i$ observations. Let $\boldsymbol X_i = (\boldsymbol x_{i1}, \ldots, \boldsymbol x_{it}, \ldots, \boldsymbol x_{in_i})^T$ be the $n_i \times p$ matrix of covariate values in cluster $i$. The expectations $\text{E}(Y_{it}) = \mu_{it}$ are related to the $p$ dimensional regressor vector $\boldsymbol x_{it}$ by the mean link function $g$
+
+$$g(\mu_{it}) = \boldsymbol x_{it}^T \boldsymbol \beta.$$
+
+Let
+
+$$\text{VAR} (Y_{it}) = \phi a_{it},$$
+where $\phi$ is a common scale parameter and $a_{it} = a(\mu_{it})$ is a known variance function. 
+
+Let $\boldsymbol R_i(\boldsymbol \alpha)$ be a working correlation matrix completely described by the parameter vector $\boldsymbol \alpha$ of length $m$, that reflects the pattern of correlation among observations in cluster $i$. Let
+
+$$\boldsymbol V_i = \phi \boldsymbol A_i^{1/2} \boldsymbol R_i(\boldsymbol \alpha) \boldsymbol  A_i^{1/2}$$
+be the corresponding working covariance matrix of $\boldsymbol Y_i$, where $\boldsymbol A_i$ is the diagonal matrix with entries $a_{it}$. 
+
+For given estimates $(\hat \phi, \hat{\boldsymbol \alpha})$ of $(\phi, \boldsymbol \alpha)$ the estimate $\hat {\boldsymbol \beta}$ is the solution of the generalized estimating equation
+
+$$\sum_{i=1}^K \frac{\partial \boldsymbol \mu_i^T}{\partial \boldsymbol \beta} \boldsymbol V_i^{-1} (\boldsymbol Y_i - \boldsymbol \mu_i) = \boldsymbol 0.$$
+
+@liang86 suggest to use consistent moment estimates for $\phi$ and $\boldsymbol \alpha$ and then use an iterative process between a modified Fisher scoring algorithm for $\boldsymbol \beta$ and the moment estimation of $\phi$ and $\boldsymbol \alpha$. This scheme yields a consistent estimate for $\boldsymbol \beta$ even if the working correlation matrices $R_i(\alpha)$ are misspecified.
+
+
+In ordinary maximum likelihood estimation, estimates of $\boldsymbol \beta$ are consistent and asymptotically normal, and the variance of the estimator can be consistently estimated by the inverse of the observed information matrix given the hypothesis of conditional independence between the observations. In the context of clustered data, however, the independence assumption may not be valid and the inverse of the observed information matrix can result in inconsistent estimates of the asymptotic variance of $\hat{\boldsymbol \beta}$ [@liang86; @zeger86]. Accordingly, @liang86 and @zeger86 propose a robust variance-covariance estimator to adjust for intra-cluster correlation.
+
+
+According to @liang86 and @zeger86, given the estimate $\hat {\boldsymbol \beta}$, it follows that $K^{1/2} (\hat {\boldsymbol \beta} - \boldsymbol \beta)$ is asymptotically multivariate normally distributed with zero mean and variance-covariance matrix 
+
+\begin{equation}
+\label{sandwich}
+\boldsymbol \Sigma = K \boldsymbol \Sigma_0^{-1} \boldsymbol \Sigma_1 \boldsymbol \Sigma_0^{-1}
+\end{equation}
+
+where
+
+$$\boldsymbol \Sigma_0 = \sum^K_{i=1} \frac{\partial \boldsymbol \mu_i^T}{\partial \boldsymbol \beta} \boldsymbol V_i^{-1} \frac{\partial \boldsymbol \mu_i}{\partial \boldsymbol \beta^T},$$
+
+$$\boldsymbol \Sigma_1 = \sum^K_{i=1} \frac{\partial \boldsymbol \mu_i^T}{\partial \boldsymbol \beta} \boldsymbol V_i^{-1} \text{COV}(Y_i) \boldsymbol V_i^{-1} \frac{\partial \boldsymbol \mu_i}{\partial \boldsymbol \beta^T}.$$
+
+$\boldsymbol \Sigma_0$ is the conventional, model-based Fisher information matrix, and its inverse can be seen as the naive variance estimator based on the naive model which assumes that observations within a cluster are conditionally independent. On the other hand, $\boldsymbol \Sigma_1$ is the covariance matrix of the score statistic and accounts for intra-cluster correlation [@longitudinal15]. The estimate $\hat {\boldsymbol \Sigma}$ is a consistent estimate of $\boldsymbol \Sigma$ even if the working correlation matrices $\boldsymbol R_i(\boldsymbol \alpha)$ are misspecified [@liang86; @zeger86].
+
+Replacing $\boldsymbol \beta, \phi$ and $\boldsymbol \alpha$ by the consistent estimates of the iterative algorithm, and the variance-covariance matrix $\text{COV}(Y_i)$ by $(Y_i - \boldsymbol \mu_i) (Y_i - \boldsymbol \mu_i)^T$ in equation \ref{sandwich} yields the so called *sandwich* variance estimator $\hat {\boldsymbol \Sigma}$ of $\boldsymbol \Sigma$.
+
+Therefore, given this empirical adjustment on dependence among measurements in the same cluster, the clustered data can be assumed to be conditionally independent and a valid Wald score can be derived to perform hypothesis testing on parameter estimates [@longitudinal15].
+
+## Extensions
+
+This approach to GEE only estimates the mean structure, while the association structure is treated as nuisance. This framework is often called GEE1. In many applications, however, the association structure is, in fact, of primary interest. By adding a second set of estimating equations to the GEE framework, @prentice88 extends the GEE1 approach allowing the simultaneous estimation of both the mean and the association structure. Because the approach of @prentice88 uses the first two moments it is sometimes referred to as GEE2. The estimation of $\boldsymbol \beta$ and $\boldsymbol \alpha$ is obtained by an itaritive procedure, giving statistically efficient, consistent and robust estimates [@prentice88; @liang92]. @zhao90 further broaden the GEE approach by allowing for joint estimation of $\boldsymbol \beta$ and $\boldsymbol \alpha$.
+
+Nonetheless, the solution of GEE2 is computationally difficult when cluster size is large, restricting the applicability of the approach. Moreover, if intra-cluster correlations are incorrectly specified neither $\boldsymbol \beta$ nor $\boldsymbol \alpha$ are estimated consistently [@liang92]. For these reasons the GEE2 approach will not be considered further.
+
+## Limitations
+
+As stated earlier, the properties of the sandwich variance estimator rely on relatively large number of clusters K.
+
+## The `geepack` package
+
+The `geepack` package implements the GEE approach in `R`.
+
+
+
+
+# References
+
+
