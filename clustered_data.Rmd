@@ -12,18 +12,57 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Clustered data are characterized as data that can be classified into a number of distinct groups or clusters within a particular study. Such data implies a hierarchical or multilevel structure, where the term "level" refers to the position of a unit of observation within a given hierarchy or group structure. By convention, the lowest level of the hierarchy is referred to as level 1. The outcome measure is always assessed at the lowest level, while the explanatory variables can be measured at any level of the hierarchy. Consequently, clustered data provide opportunities to explore, in greater depth, the interrelationships among variables at any level.
 
-Clustering usually implies that measurements on units within a cluster are more similar than measurements on units in different clusters, implying that observations within a cluster are not independent and therefore standard data analysis methods may not be apropriate. Linear models (LM) and generalized linear models (GLMs) assume that the observations are conditionally independent given the specified fixed effects. Thus applying these methods to cluster-correlated data could lead to incorrect inferences [@fitz; @ananth18].
+Clustered data can arise due to a naturally occurring hierarchy in the target population and/or a consequence of study design. In the social sciences, the group structure is often given, not designed into the study. A classic example is an observational study where student performance metrics are clustered within schools and covariates can belong to the student and/or school levels. Nevertheless, only examples of clustered data in the health and biological sciences will be considered in this paper. Examples of cluster-correlated data in these fields are:
+
+1. Multicenter clinical trials, where measurements are taken on patients nested within different clinics or centers.
+
+2. Longitudinal data, where multiple measurements are taken over time on each individual. Here the clusters are the different individuals.
+
+3. Cluster randomized trials, where whole clinics are randomized to an intervention, as opposed to randomization at the subject level. Here, the clusters are formed of patients within clinic.
+
+4. Multicenter longitudinal clinical trials, where repeated measurements are taken over time, nested within subjects, nested within clinics.
+
+5. Agricultural experiments, where treatments are assigned to different pots, then multiple plants are grown in each pot and multiple measurements are taken over time for each plant. Here, repeated measurements on plants are taken over time, nested within plants, nested within pots.
+
+From the examples above, we can distinguish between two types of clustered data, nested and non-nested. Suppose one is interested on the effect of different treatments. In a nested structure, only one of the treatments being compared is present in each cluster. Examples 2, 3, 4 and 5 above all have a nested hierarchical structure. On the other hand, in non-nested structures at least some of the clusters contain observations from different treatment groups. Examples 1 and 4 have non-nested structures.
+
+## Analysis of clustered data
+
+Clustering usually implies that measurements on units within a cluster are more similar than measurements on units in different clusters. Thus, observations within a cluster are not independent, while observations from different clusters are. The degree of association between the observations within clusters is usually measured as the intra-cluster correlation (ICC), given by
+
+$$ICC = \frac{\sigma^2_B}{\sigma^2_B + \sigma^2_W},$$
+where $\sigma^2_B$ is the variance between clusters and $\sigma^2_W$ is the variance within clusters.
+
+Given the nature of cluster-correlated data, it seems innaproprioate to treat cluster data as if all observations are independent. The effect of using this approach will depend on the nature of the correlation structure. Multiple simulation studies have assessed the consequences of ignoring clustering and found dramatic effects for many cluster structures [@galbraith10; @ananth18; @wilktest06].
+
+There are mainly four general approaches when analyzing cluster-correlated data:
+
+1. Reducing clusters to independent observations.
+
+2. Classical regression.
+
+3. Adjusting existing tests to account for clustering.
+
+4. Modeling approaches.
 
 
+### Reducing data to independent observations
 
-Several regression methods that account for the intra-cluster correlation have been developed. These methods can be divided in three general approaches:
+This approach consists in reducing the multiple observations in a cluster to a single observation by taking a suitable summary statistic. Common summary statistics are the mean and the median. In situations where the measurements within a cluster are taken over time, it also makes sense to use the difference between the basal measurement and the final measurement. Given the nature of clustered data, where observations from different clusters can be considered independent, the obtained observations can be considered independent and analyzed with standard methods.
 
-1. GLMs with fixed effects to account for clustering.
+Although this is a valid approach, it comes with some serious limitations. Reducing all the observations in a cluster to a single observation, a great amount of information can be lost, resulting in a less powerful analysis. Furthermore, complications arise if there are unequal numbers of observations per cluster or if the group structure is not nested.
 
-2. Multilevel Models
+### Classical regression
 
-3. Generalized estimating equations
+It is possible to account for clustering by including the grouping factors in a classical regression model as indicator variables. When the number of clusters is small and the structure is not nested, this method can be a reasonable approach [@galbraith10; @senn98]. However, if the number of clusters is large, including an indicator variable for each cluster could be problematic. Imagine a longitudinal study with thousands of patients, this approach would require to fit a classical regression model with thousands of indicator variables which may result in collinearity problems. Moreover, this approach does not allow the correlation structure of the data to be studied.
 
-Clustered data can arise due to a naturally occurring hierarchy in the target population and/or a consequence of study design. 
+### Adjusting existing tests to account for clustering
 
-The group structure does not necessarily need to be nested; that is, level 1 units nested within level 2 units, nested within level 3 units and so on. Non-nested data can arise when units are characterized by overlapping attributes.
+These methods modify existing parametric and non-parametric tests to account for clustering. Modifications of the Wilcoxon rank sum test (Mann-Whitney U test) have been developed by  t-test and the $\chi^2$ test have been proposed to adjust for clustering [see @gonen]. Rank sum tests that account for clustering have been developed by @rosner99, @rosner03, @datta05. Modifications of the signed-rank tests for paired data have also been developed [@rosner06; @datta08].
+
+Although these methods can perform as well as alternative methods in some situations, they offer less flexibility than the model-based approaches that will be introduced next.
+
+### Modeling approaches
+
+Linear mixed models and generalized estimating equations are extensively used model-based methods in the analysis of clustered data. These two approaches will be specified in detail in the next two sections. Given the limitations of the previous methods and the flexibility of the model based approach, only LMMs and GEEs will be considered in our analysis.
+

@@ -1,0 +1,17 @@
+---
+title: "Glossary"
+author: "Sergio Olmos Pardo"
+date: "3/4/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ICC = Intra-cluster correlation
+LM = Linear model
+GLM = Generalized linear model
+LMM = Linear mixed model
+MM = Multilevel model
+GEE = Generalized estimating equations

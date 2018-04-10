@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 # 1. Context and Motivation of the Project
 
 ## 1.1. General Description
-When data have a clustered/grouped structure, measurements on units within a cluster are in general more similar than measurements on units in different clusters. Statistical models for this type of data must account for the intra-cluster correlation at each level, otherwise inferences may be misleading.
+When data have a clustered/grouped structure, measurements on units within a cluster are in general more similar than measurements on units in different clusters. Statistical models for this type of data must account for the intra-cluster correlation (ICC) at each level, otherwise inferences may be misleading.
 
 There are several methods for analyzing multilevel data, which require different sets of assumptions and their adequacy differs depending on the structure of the data. The two most commonly used regression methods are linear mixed models (LMM) and generalized estimating equations (GEE). There are others, such as conjugate generalized linear mixed models [@conjugate].
 
